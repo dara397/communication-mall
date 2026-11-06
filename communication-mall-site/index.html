@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Communication Mall</title>
+<meta name="description" content="Communication Mall is a leading tech advisory firm in Southern California for connectivity, structured cabling and cloud networking, and every provider your business runs on.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;1,6..96,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+/* Layout idea: a quiet residential-luxury scroll. Dark ink and ivory bands alternate,
+   all-caps tracked serif headings, hairline rules, text-link CTAs, one labeled
+   architectural line drawing as the signature visual. */
+:root{
+  --ink:#0d141c;          /* midnight ink, slight blue bias */
+  --ink-2:#141d27;
+  --ivory:#f3efe6;
+  --ivory-2:#e9e3d6;
+  --champagne:#b69a64;    /* the single accent */
+  --stone:#8b8f8f;
+  --line-dark:rgba(243,239,230,.14);
+  --line-light:rgba(13,20,28,.14);
+  --display:"Bodoni Moda", "Didot", "Bodoni 72", Georgia, serif;
+  --body:"Jost", "Futura", "Avenir Next", "Helvetica Neue", Arial, sans-serif;
+  --gutter:clamp(20px, 5vw, 72px);
+  --max:1240px;
+  color-scheme:dark;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--ink);color:var(--ivory);font-family:var(--body);font-weight:300;font-size:17px;line-height:1.7;-webkit-font-smoothing:antialiased}
+img,svg,canvas{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:1px solid var(--champagne);outline-offset:4px}
+
+.wrap{max-width:var(--max);margin:0 auto;padding:0 var(--gutter)}
+.eyebrow{font-family:var(--body);font-weight:400;font-size:12px;letter-spacing:.32em;text-transform:uppercase;color:var(--champagne)}
+.h-caps{font-family:var(--display);font-weight:400;text-transform:uppercase;letter-spacing:.14em;line-height:1.18;text-wrap:balance}
+.h-xl{font-size:clamp(40px,7.4vw,104px);letter-spacing:.1em}
+.h-l{font-size:clamp(28px,3.6vw,46px)}
+.h-m{font-size:clamp(20px,2vw,25px);letter-spacing:.12em}
+.lede{font-size:clamp(17px,1.5vw,20px);max-width:62ch}
+.muted{color:var(--stone)}
+.rule{height:1px;background:var(--line-dark);border:0}
+
+.textlink{display:inline-flex;align-items:center;gap:14px;font-size:12px;font-weight:400;letter-spacing:.3em;text-transform:uppercase;padding:6px 0;border-bottom:1px solid currentColor;transition:gap .35s ease,color .35s ease}
+.textlink::after{content:"";width:28px;height:1px;background:currentColor;transition:width .35s ease}
+.textlink:hover{color:var(--champagne)}
+.textlink:hover::after{width:44px}
+
+/* Header */
+.topbar{border-bottom:1px solid var(--line-dark);font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--stone)}
+.topbar .wrap{display:flex;justify-content:space-between;gap:16px;padding-top:10px;padding-bottom:10px;flex-wrap:wrap}
+header.site{position:sticky;top:0;z-index:20;background:rgba(13,20,28,.92);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--line-dark)}
+header.site .wrap{display:flex;align-items:center;justify-content:space-between;gap:24px;height:78px}
+.brand{display:flex;align-items:center;gap:14px}
+.brand .mark{width:38px;height:38px}
+.brand .name{font-family:var(--display);font-size:15px;letter-spacing:.34em;text-transform:uppercase;line-height:1.2}
+.brand .name small{display:block;font-family:var(--body);font-size:9.5px;letter-spacing:.42em;color:var(--champagne);margin-top:3px}
+nav.main{display:flex;align-items:center;gap:clamp(18px,2.6vw,38px)}
+nav.main a{font-size:12px;letter-spacing:.24em;text-transform:uppercase;font-weight:400;position:relative;padding:4px 0}
+nav.main a:not(.cta)::after{content:"";position:absolute;left:0;right:100%;bottom:-2px;height:1px;background:var(--champagne);transition:right .35s ease}
+nav.main a:not(.cta):hover::after{right:0}
+nav.main a.cta{border:1px solid var(--champagne);color:var(--champagne);padding:11px 20px;transition:background .3s,color .3s}
+nav.main a.cta:hover{background:var(--champagne);color:var(--ink)}
+.menu-btn{display:none;background:none;border:0;color:var(--ivory);font:400 12px var(--body);letter-spacing:.3em;text-transform:uppercase;cursor:pointer;padding:8px 0}
+
+/* Hero */
+.hero{position:relative;overflow:hidden;border-bottom:1px solid var(--line-dark);background:var(--ink)}
+.hero .photo{position:absolute;inset:0;background:url("hero-oc.jpg") center 62%/cover no-repeat;animation:drift 28s ease-in-out infinite alternate}
+@keyframes drift{from{transform:scale(1.02)}to{transform:scale(1.09) translateY(-1.2%)}}
+.hero .shade{position:absolute;inset:0;background:
+  linear-gradient(180deg,rgba(13,20,28,.78) 0%,rgba(13,20,28,.35) 34%,rgba(13,20,28,.30) 58%,rgba(13,20,28,.88) 100%),
+  radial-gradient(ellipse at 50% 42%,rgba(13,20,28,.38),rgba(13,20,28,0) 70%)}
+.hero .wrap{position:relative;padding-top:clamp(130px,17vw,220px);padding-bottom:clamp(90px,11vw,150px);display:grid;gap:34px;justify-items:center;text-align:center}
+.hero h1{animation:track 2.4s cubic-bezier(.2,.7,.2,1) both;text-shadow:0 2px 30px rgba(13,20,28,.45)}
+@keyframes track{from{letter-spacing:.02em}to{letter-spacing:.1em}}
+.hero .lede{color:rgba(243,239,230,.92);margin:0 auto;text-shadow:0 1px 14px rgba(13,20,28,.6)}
+.hero .eyebrow{color:#d9c194}
+.hero .actions{display:flex;gap:40px;flex-wrap:wrap;justify-content:center;margin-top:6px}
+.scroll{margin-top:34px;display:grid;justify-items:center;gap:12px;font-size:11px;letter-spacing:.36em;text-transform:uppercase;color:rgba(243,239,230,.7)}
+.scroll i{display:block;width:1px;height:54px;background:linear-gradient(var(--champagne),transparent);animation:drip 2.6s ease-in-out infinite}
+@keyframes drip{0%{transform:scaleY(.3);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}100%{transform:scaleY(.3);transform-origin:bottom}}
+.hero .place{position:absolute;right:var(--gutter);bottom:22px;font-size:10.5px;letter-spacing:.26em;text-transform:uppercase;color:rgba(243,239,230,.6)}
+.hero .place a{border-bottom:1px solid rgba(243,239,230,.3)}
+@media (max-width:560px){.hero .place{left:var(--gutter);right:auto}}
+
+/* Sections */
+section{padding:clamp(80px,10vw,150px) 0}
+.light{background:var(--ivory);color:var(--ink);color-scheme:light}
+.light .muted{color:#5f6466}
+.light .rule{background:var(--line-light)}
+.light .eyebrow{color:#8a6f3e}
+
+.welcome .wrap{display:grid;grid-template-columns:1fr 1.15fr;gap:clamp(40px,7vw,110px);align-items:start}
+.welcome .copy{display:grid;gap:22px}
+.welcome .copy p{max-width:58ch}
+
+/* Sketch section */
+.sketch .wrap{display:grid;grid-template-columns:.9fr 1.3fr;gap:clamp(40px,6vw,90px);align-items:center}
+blockquote{font-family:var(--display);font-style:italic;font-size:clamp(24px,2.6vw,34px);line-height:1.38;text-wrap:balance}
+blockquote::before{content:"\201C";display:block;font-size:72px;line-height:.6;color:var(--champagne);margin-bottom:18px;font-style:normal}
+.credit{margin-top:26px;font-size:12px;letter-spacing:.28em;text-transform:uppercase;color:var(--stone)}
+figure{display:grid;gap:16px}
+figcaption{font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--stone);border-top:1px solid var(--line-dark);padding-top:14px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.drawing text{font-family:var(--body);font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;fill:var(--ivory)}
+.drawing .lbl-n{fill:var(--champagne);font-family:var(--display);font-size:12px;letter-spacing:.06em}
+
+/* Core three */
+.core-head{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:end;margin-bottom:clamp(50px,6vw,80px)}
+.pillars{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line-light)}
+.pillar{padding:44px clamp(20px,2.6vw,40px) 50px;border-right:1px solid var(--line-light);display:grid;gap:20px;align-content:start}
+.pillar:first-child{padding-left:0}
+.pillar:last-child{border-right:0;padding-right:0}
+.pillar .num{font-family:var(--display);font-size:52px;line-height:1;color:#8a6f3e;font-style:italic}
+.pillar ul{list-style:none;display:grid;gap:10px;border-top:1px solid var(--line-light);padding-top:20px;font-size:15px}
+.pillar li{display:flex;gap:12px}
+.pillar li::before{content:"";flex:none;width:14px;height:1px;background:#8a6f3e;margin-top:13px}
+
+/* Pricing */
+.pricing{background:var(--ink-2);border-top:1px solid var(--line-dark)}
+.pricing .wrap{display:grid;grid-template-columns:.85fr 1.35fr;gap:clamp(40px,7vw,110px);align-items:start}
+.pricing .note{margin-top:30px;font-size:13.5px;color:rgba(243,239,230,.6);border-top:1px solid var(--line-dark);padding-top:18px;max-width:46ch}
+.plist{display:grid;gap:44px}
+.pgroup h3{font-size:11px;font-weight:400;letter-spacing:.34em;text-transform:uppercase;color:var(--champagne);padding-bottom:12px;border-bottom:1px solid var(--line-dark)}
+.prow{display:grid;grid-template-columns:auto 1fr auto;align-items:baseline;gap:14px;padding:16px 0;border-bottom:1px solid var(--line-dark)}
+.prow .n{font-family:var(--display);font-size:clamp(16px,1.5vw,19px);letter-spacing:.06em}
+.prow .n small{display:block;font-family:var(--body);font-size:13px;letter-spacing:0;color:rgba(243,239,230,.58);margin-top:2px}
+.prow .dots{border-bottom:1px dotted rgba(182,154,100,.45);transform:translateY(-6px)}
+.prow .v{text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums}
+.prow .v span{display:block;font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:var(--stone)}
+.prow .v b{font-family:var(--display);font-weight:400;font-size:clamp(22px,2.2vw,28px);color:var(--ivory)}
+.prow .v i{font-style:normal;font-size:12px;color:var(--stone);margin-left:4px}
+.pricing .wrap > div:first-child{position:sticky;top:120px}
+@media (max-width:900px){.pricing .wrap{grid-template-columns:1fr}.pricing .wrap > div:first-child{position:static}}
+@media (max-width:560px){.prow{grid-template-columns:1fr auto}.prow .dots{display:none}}
+
+/* Catalogue */
+.catalogue .intro{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:end;margin-bottom:60px}
+.cat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-top:1px solid var(--line-dark);border-left:1px solid var(--line-dark)}
+.cat{border-right:1px solid var(--line-dark);border-bottom:1px solid var(--line-dark);padding:30px 26px 34px;display:grid;gap:12px;align-content:start;transition:background .4s}
+.cat:hover{background:var(--ink-2)}
+.cat h4{font-family:var(--display);font-weight:400;font-size:17px;letter-spacing:.12em;text-transform:uppercase;line-height:1.3}
+.cat p{font-size:14.5px;color:rgba(243,239,230,.7);line-height:1.6}
+.cat .idx{font-size:11px;letter-spacing:.3em;color:var(--champagne)}
+
+/* Providers */
+.providers{background:var(--ivory-2);color:var(--ink);color-scheme:light}
+.providers .eyebrow{color:#8a6f3e}
+.prov-head{text-align:center;display:grid;gap:22px;justify-items:center;margin-bottom:60px}
+.prov-list{display:flex;flex-wrap:wrap;justify-content:center;border-top:1px solid var(--line-light);border-bottom:1px solid var(--line-light);padding:34px 0}
+.prov-list span{font-family:var(--display);font-size:clamp(18px,1.9vw,24px);letter-spacing:.08em;padding:10px 26px;position:relative;white-space:nowrap}
+.prov-list span:not(:last-child)::after{content:"";position:absolute;right:0;top:50%;width:5px;height:5px;background:#8a6f3e;transform:translate(50%,-50%) rotate(45deg)}
+.prov-note{margin-top:22px;text-align:center;font-size:12px;letter-spacing:.06em;color:#6a6e70}
+
+/* Approach */
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(20px,3vw,44px);margin-top:70px;counter-reset:s}
+.step{display:grid;gap:16px;align-content:start;border-top:1px solid var(--champagne);padding-top:26px}
+.step .k{font-size:11px;letter-spacing:.34em;text-transform:uppercase;color:var(--champagne)}
+.step p{font-size:15px;color:rgba(243,239,230,.74)}
+
+/* Industries */
+.industries{border-top:1px solid var(--line-dark);padding:56px 0}
+.industries .wrap{display:flex;gap:28px 50px;flex-wrap:wrap;align-items:baseline;justify-content:space-between}
+.industries ul{list-style:none;display:flex;flex-wrap:wrap;gap:12px 34px;font-size:13px;letter-spacing:.24em;text-transform:uppercase;color:rgba(243,239,230,.8)}
+
+/* Inquire */
+.inquire .wrap{display:grid;grid-template-columns:1fr 1.1fr;gap:clamp(40px,7vw,110px);align-items:start}
+.contact-blocks{display:grid;gap:30px;margin-top:40px}
+.contact-blocks div{display:grid;gap:6px;border-top:1px solid var(--line-light);padding-top:18px}
+.contact-blocks .k{font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:#8a6f3e}
+form{display:grid;grid-template-columns:1fr 1fr;gap:28px 30px}
+.field{display:grid;gap:8px}
+.field.full{grid-column:1/-1}
+label{font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:#5f6466}
+input,select,textarea{font:300 17px var(--body);color:var(--ink);background:transparent;border:0;border-bottom:1px solid rgba(13,20,28,.3);padding:10px 0;border-radius:0;width:100%;transition:border-color .3s}
+select{appearance:none;-webkit-appearance:none;background-image:linear-gradient(45deg,transparent 50%,#8a6f3e 50%),linear-gradient(135deg,#8a6f3e 50%,transparent 50%);background-position:calc(100% - 12px) 55%,calc(100% - 7px) 55%;background-size:5px 5px;background-repeat:no-repeat}
+textarea{resize:vertical;min-height:90px}
+input:focus,select:focus,textarea:focus{outline:none;border-bottom-color:#8a6f3e}
+.chips{display:flex;flex-wrap:wrap;gap:10px}
+.chips input{position:absolute;opacity:0;width:1px;height:1px}
+.chips label{font-size:11px;letter-spacing:.2em;border:1px solid rgba(13,20,28,.25);padding:9px 14px;cursor:pointer;color:var(--ink);transition:all .25s}
+.chips input:checked + label{background:var(--ink);color:var(--ivory);border-color:var(--ink)}
+.chips input:focus-visible + label{outline:1px solid #8a6f3e;outline-offset:3px}
+button.submit{grid-column:1/-1;justify-self:start;background:var(--ink);color:var(--ivory);border:1px solid var(--ink);font:400 12px var(--body);letter-spacing:.32em;text-transform:uppercase;padding:18px 34px;cursor:pointer;transition:background .3s,color .3s}
+button.submit:hover{background:transparent;color:var(--ink)}
+.form-msg{grid-column:1/-1;font-size:15px;color:#5f6466;min-height:1.6em}
+
+/* Footer */
+footer{padding:70px 0 40px;border-top:1px solid var(--line-dark)}
+.foot-links{display:flex;flex-wrap:wrap;gap:14px 36px;font-size:11.5px;letter-spacing:.28em;text-transform:uppercase;padding-bottom:40px;border-bottom:1px solid var(--line-dark)}
+.foot-links a:hover{color:var(--champagne)}
+.foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:40px;padding:44px 0}
+.foot-grid h5{font-size:11px;font-weight:400;letter-spacing:.3em;text-transform:uppercase;color:var(--champagne);margin-bottom:14px}
+.foot-grid p,.foot-grid li{font-size:14.5px;color:rgba(243,239,230,.72);list-style:none}
+.legal{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-size:12px;letter-spacing:.14em;color:var(--stone)}
+
+/* Responsive */
+@media (max-width:1020px){
+  .cat-grid{grid-template-columns:repeat(2,1fr)}
+  .steps{grid-template-columns:repeat(2,1fr)}
+  .foot-grid{grid-template-columns:1fr 1fr}
+}
+@media (max-width:900px){
+  nav.main{display:none;position:absolute;top:78px;left:0;right:0;flex-direction:column;align-items:flex-start;gap:22px;background:var(--ink);padding:30px var(--gutter) 36px;border-bottom:1px solid var(--line-dark)}
+  nav.main.open{display:flex}
+  .menu-btn{display:block}
+  .welcome .wrap,.sketch .wrap,.core-head,.catalogue .intro,.inquire .wrap{grid-template-columns:1fr}
+  .pillars{grid-template-columns:1fr}
+  .pillar,.pillar:first-child,.pillar:last-child{padding:36px 0;border-right:0;border-bottom:1px solid var(--line-light)}
+}
+@media (max-width:560px){
+  .cat-grid,.steps,.foot-grid{grid-template-columns:1fr}
+  form{grid-template-columns:1fr}
+  .topbar .hide-s{display:none}
+  .brand .name{font-size:13px;letter-spacing:.26em}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  html{scroll-behavior:auto}
+}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="wrap">
+    <span>Technology Advisory · Southern California</span>
+    <span class="hide-s">info@communicationmall.com</span>
+  </div>
+</div>
+
+<header class="site">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="Communication Mall home">
+      <svg class="mark" viewBox="0 0 40 40" fill="none" stroke="#b69a64" stroke-width="1" aria-hidden="true">
+        <rect x="1" y="1" width="38" height="38"/>
+        <path d="M27 13.5a9 9 0 1 0 0 13"/>
+        <path d="M14 27V14l6 7 6-7v13" stroke="#f3efe6"/>
+      </svg>
+      <span class="name">Communication Mall<small>Tech Advisory</small></span>
+    </a>
+    <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="mainNav">Menu</button>
+    <nav class="main" id="mainNav" aria-label="Main">
+      <a href="#welcome">The Firm</a>
+      <a href="#core">Solutions</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#providers">Providers</a>
+      <a href="#approach">Approach</a>
+      <a class="cta" href="#inquire">Inquire Now</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+<section class="hero" aria-label="Introduction" style="padding:0">
+  <div class="photo" role="img" aria-label="Orange County neighborhoods and green hills with mountains on the horizon"></div>
+  <div class="shade" aria-hidden="true"></div>
+  <div class="wrap">
+    <p class="eyebrow">Communication Mall · Est. in Southern California</p>
+    <h1 class="h-caps h-xl">The Art of<br>Connection</h1>
+    <p class="lede">A leading tech advisory firm for the businesses of Southern California. One trusted advisor for connectivity, cabling and cloud networking, and for every service your business runs on.</p>
+    <div class="actions">
+      <a class="textlink" href="#core">Discover</a>
+      <a class="textlink" href="#inquire">Inquire Now</a>
+    </div>
+    <div class="scroll" aria-hidden="true">Scroll Down<i></i></div>
+  </div>
+  <p class="place">Orange County, California · Photo <a href="https://unsplash.com/photos/MaD1P_T29mE">Spencer DeMera / Unsplash</a></p>
+</section>
+
+<section class="welcome light" id="welcome">
+  <div class="wrap">
+    <div>
+      <p class="eyebrow">The Firm</p>
+      <h2 class="h-caps h-l" style="margin-top:22px">Welcome to<br>Communication Mall</h2>
+    </div>
+    <div class="copy">
+      <p class="lede">Technology decisions shape how a business works every day. We help you make them well, and then we stay to manage them.</p>
+      <p>Communication Mall is a vendor-neutral technology advisory firm. We sit on your side of the table: we assess what you have, design what you need, source it across the full field of carriers and suppliers, oversee the install, and manage the account for its whole life.</p>
+      <p>Our practice is built around the infrastructure every business stands on: internet and connectivity, structured cabling and cloud networking. Because we work across the industry, we can also bring you any service or product a business needs, from fiber and satellite to voice, TV, security and managed IT.</p>
+      <p>The result is fewer vendors to chase, one point of contact, and technology costs you understand.</p>
+      <div style="margin-top:12px"><a class="textlink" href="#approach">The Story Behind</a></div>
+    </div>
+  </div>
+</section>
+
+<section class="sketch" aria-labelledby="sketchTitle">
+  <div class="wrap">
+    <div>
+      <p class="eyebrow">Built From the Ground Up</p>
+      <h2 class="h-caps h-l" id="sketchTitle" style="margin:22px 0 40px">From the Demarc<br>to the Cloud</h2>
+      <blockquote>Great networks are designed like great buildings: from the foundation up, with every path planned before the first cable is pulled.</blockquote>
+      <p class="credit">The Communication Mall Design Principle</p>
+    </div>
+    <figure>
+      <svg class="drawing" viewBox="0 0 640 560" role="img" aria-labelledby="dTitle dDesc">
+        <title id="dTitle">Network section of a commercial building</title>
+        <desc id="dDesc">Line drawing of a four-storey building showing a carrier fiber entrance, main and intermediate distribution frames, a cabling riser, Wi-Fi on each floor, a rooftop satellite terminal for backup, and a link to cloud networking.</desc>
+        <g fill="none" stroke="#b69a64" stroke-width="1">
+          <!-- ground -->
+          <path d="M20 470H620" stroke="rgba(243,239,230,.35)"/>
+          <path d="M20 476H620M20 482H620" stroke="rgba(243,239,230,.12)"/>
+          <!-- building -->
+          <rect x="150" y="150" width="300" height="320" stroke="#f3efe6" stroke-opacity=".75"/>
+          <path d="M150 230H450M150 310H450M150 390H450" stroke="#f3efe6" stroke-opacity=".35"/>
+          <!-- windows -->
+          <g stroke="rgba(243,239,230,.18)">
+            <path d="M330 168v44M360 168v44M390 168v44M420 168v44M330 248v44M360 248v44M390 248v44M420 248v44M330 328v44M360 328v44M390 328v44M420 328v44M330 408v44M360 408v44M390 408v44M420 408v44"/>
+          </g>
+          <!-- roof parapet and satellite terminal -->
+          <path d="M150 150V142H450V150" stroke="#f3efe6" stroke-opacity=".5"/>
+          <rect x="380" y="118" width="34" height="6" transform="rotate(-18 397 121)"/>
+          <path d="M397 126V142"/>
+          <path d="M392 108l-26-60M402 104l14-58" stroke-dasharray="2 5"/>
+          <!-- riser -->
+          <path d="M240 450V180" stroke-width="1.4"/>
+          <path d="M236 180h8M236 260h8M236 340h8M236 420h8"/>
+          <!-- IDF boxes -->
+          <rect x="226" y="186" width="28" height="18"/><rect x="226" y="266" width="28" height="18"/><rect x="226" y="346" width="28" height="18"/>
+          <!-- MDF -->
+          <rect x="220" y="424" width="40" height="28" stroke-width="1.4"/>
+          <!-- horizontal runs -->
+          <path d="M254 195H300M254 275H300M254 355H300M260 438H300" stroke-dasharray="1 4"/>
+          <!-- wifi arcs -->
+          <g>
+            <circle cx="300" cy="195" r="2" fill="#b69a64"/><path d="M292 187a11 11 0 0 1 16 0M286 181a19 19 0 0 1 28 0"/>
+            <circle cx="300" cy="275" r="2" fill="#b69a64"/><path d="M292 267a11 11 0 0 1 16 0M286 261a19 19 0 0 1 28 0"/>
+            <circle cx="300" cy="355" r="2" fill="#b69a64"/><path d="M292 347a11 11 0 0 1 16 0M286 341a19 19 0 0 1 28 0"/>
+          </g>
+          <!-- fiber entrance underground -->
+          <path d="M20 506H200Q215 506 215 492V452" stroke-width="1.6"/>
+          <circle cx="215" cy="452" r="2.5" fill="#b69a64"/>
+          <!-- cloud -->
+          <path d="M140 70a22 22 0 0 1 40-14a26 26 0 0 1 48 8a18 18 0 0 1 2 36H146a16 16 0 0 1-6-30z" stroke="#f3efe6" stroke-opacity=".6"/>
+          <path d="M190 100V150" stroke-dasharray="2 5"/>
+          <!-- leader lines -->
+          <g stroke="rgba(243,239,230,.4)">
+            <path d="M226 195H120M226 438H120M240 315H120M450 195H520M300 355H520M414 118H520M230 78H520M110 506V530"/>
+          </g>
+        </g>
+        <text class="lbl-n" x="22" y="190">01</text><text x="22" y="206">IDF · Floor closet</text>
+        <text class="lbl-n" x="22" y="310">02</text><text x="22" y="326">Backbone riser</text>
+        <text class="lbl-n" x="22" y="433">03</text><text x="22" y="449">MDF · Main frame</text>
+        <text class="lbl-n" x="22" y="527">04</text><text x="22" y="543">Carrier fiber entrance</text>
+        <text class="lbl-n" x="528" y="190">05</text><text x="528" y="206">Cat6A runs</text>
+        <text class="lbl-n" x="528" y="350">06</text><text x="528" y="366">Managed Wi-Fi</text>
+        <text class="lbl-n" x="528" y="113">07</text><text x="528" y="129">Starlink backup</text>
+        <text class="lbl-n" x="528" y="73">08</text><text x="528" y="89">Cloud &amp; SD-WAN</text>
+      </svg>
+      <figcaption><span>Section · A typical multi-floor office</span><span>Drawing not to scale</span></figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="light" id="core" aria-labelledby="coreTitle">
+  <div class="wrap">
+    <div class="core-head">
+      <div>
+        <p class="eyebrow">The Heart of the Practice</p>
+        <h2 class="h-caps h-l" id="coreTitle" style="margin-top:22px">Connectivity, Cabling<br>&amp; Cloud Networking</h2>
+      </div>
+      <p class="muted">Three disciplines that decide whether everything else works. We design them together, so your circuits, your physical plant and your cloud network behave as one system.</p>
+    </div>
+    <div class="pillars">
+      <article class="pillar">
+        <span class="num">I.</span>
+        <h3 class="h-caps h-m">Connectivity</h3>
+        <p>The right circuit for every site, sourced competitively across carriers and built with redundancy so a single outage never stops your business.</p>
+        <ul>
+          <li>Dedicated fiber and business broadband</li>
+          <li>Ethernet, wavelengths and private lines</li>
+          <li>Starlink and fixed-wireless failover</li>
+          <li>Multi-site and new-location rollouts</li>
+          <li>Bill audits and contract renegotiation</li>
+        </ul>
+      </article>
+      <article class="pillar">
+        <span class="num">II.</span>
+        <h3 class="h-caps h-m">Structured Cabling</h3>
+        <p>The physical foundation, engineered to standard and documented so it serves you for the life of the building.</p>
+        <ul>
+          <li>Cat6 and Cat6A copper, single and multimode fiber</li>
+          <li>MDF and IDF build-outs, racks and cable management</li>
+          <li>Wireless surveys and access point placement</li>
+          <li>Tenant improvements, moves and clean-ups</li>
+          <li>Testing, labeling and as-built documentation</li>
+        </ul>
+      </article>
+      <article class="pillar">
+        <span class="num">III.</span>
+        <h3 class="h-caps h-m">Cloud Networking</h3>
+        <p>Networks that follow your people and applications to the cloud, with performance and security managed from one view.</p>
+        <ul>
+          <li>SD-WAN and SASE</li>
+          <li>Managed firewalls, switching and Wi-Fi</li>
+          <li>Direct cloud connections to AWS, Azure and Google Cloud</li>
+          <li>Zero-trust remote access</li>
+          <li>24/7 monitoring and lifecycle management</li>
+        </ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="pricing" id="pricing" aria-labelledby="priceTitle">
+  <div class="wrap">
+    <div>
+      <p class="eyebrow">Cabling Pricing</p>
+      <h2 class="h-caps h-l" id="priceTitle" style="margin:22px 0 26px">Transparent<br>Rates</h2>
+      <p style="color:rgba(243,239,230,.8);max-width:46ch">Published starting prices for structured cabling across Southern California. Every copper drop includes the cable, jack, faceplate, patch panel port, Fluke certification and labeling at both ends.</p>
+      <div style="margin-top:30px"><a class="textlink" href="#inquire">Request a Site Survey</a></div>
+      <p class="note">Starting prices apply to projects of 10 or more drops with accessible ceilings during business hours. Long runs, hard-lid ceilings, conduit, after-hours work and prevailing wage are quoted after a free site survey.</p>
+    </div>
+    <div class="plist"><div class="pgroup"><h3>Copper Data Drops</h3><div class="prow"><span class="n">Cat6 Data Drop<small>Installed, terminated, tested and labeled</small></span><span class="dots" aria-hidden="true"></span><span class="v"><span>From</span><b>$95</b><i>/ drop</i></span></div><div class="prow"><span class="n">Cat6A Data Drop<small>10 Gb to the full 100 m, for Wi-Fi 6E and 7</small></span><span class="dots" aria-hidden="true"></span><span class="v"><span>From</span><b>$189</b><i>/ drop</i></span></div><div class="prow"><span class="n">Finished-Wall Drop<small>Single drop added to an occupied space</small></span><span class="dots" aria-hidden="true"></span><span class="v"><span>From</span><b>$189</b><i>/ drop</i></span></div></div><div class="pgroup"><h3>Fiber</h3><div class="prow"><span class="n">Multimode Fiber Run<small>OM4 backbone between closets</small></span><span class="dots" aria-hidden="true"></span><span class="v"><span>From</span><b>$285</b><i>/ run</i></span></div><div class="prow"><span class="n">Single-Mode Fiber Run<small>OS2 for long runs and between buildings</small></span><span class="dots" aria-hidden="true"></span><span class="v"><span>From</span><b>$329</b><i>/ run</i></span></div><div class="prow"><span class="n">Fiber Termination<small>Connectorized and tested</small></span><span class="dots" aria-hidden="true"></span><span class="v"><span>From</span><b>$42</b><i>/ strand</i></span></div></div><div class="pgroup"><h3>Wireless &amp; Security</h3><div class="prow"><span class="n">Wi-Fi Access Point Drop<small>Ceiling-mounted PoE cable run</small></span><span class="dots" aria-hidden="true"></span><span class="v"><span>From</span><b>$259</b><i>/ AP</i></span></div><div class="prow"><span class="n">Camera or Access Control Drop<small>Cabled to the device location</small></span><span class="dots" aria-hidden="true"></span><span class="v"><span>From</span><b>$215</b><i>/ device</i></span></div></div><div class="pgroup"><h3>Closets &amp; Packages</h3><div class="prow"><span class="n">Rack &amp; Patch Panel<small>Wall rack, patch panel and cable management</small></span><span class="dots" aria-hidden="true"></span><span class="v"><span>From</span><b>$1,425</b></span></div><div class="prow"><span class="n">MDF / IDF Build-Out<small>Full network closet, racks included</small></span><span class="dots" aria-hidden="true"></span><span class="v"><span>From</span><b>$3,350</b><i>/ room</i></span></div><div class="prow"><span class="n">Small Office Package<small>15 Cat6 drops, wall rack and certification</small></span><span class="dots" aria-hidden="true"></span><span class="v"><span>From</span><b>$3,325</b></span></div></div></div>
+  </div>
+</section>
+
+<section class="catalogue" aria-labelledby="catTitle">
+  <div class="wrap">
+    <div class="intro">
+      <div>
+        <p class="eyebrow">Beyond the Core</p>
+        <h2 class="h-caps h-l" id="catTitle" style="margin-top:22px">Every Service<br>a Business Needs</h2>
+      </div>
+      <p class="muted">If your business runs on it, we can source it, install it and manage it. One advisor, one point of contact, one relationship across the whole portfolio.</p>
+    </div>
+    <div class="cat-grid">
+      <div class="cat"><span class="idx">01</span><h4>Voice &amp; UCaaS</h4><p>Cloud phone systems, Microsoft Teams calling, SIP trunking and porting.</p></div>
+      <div class="cat"><span class="idx">02</span><h4>Contact Center &amp; CX</h4><p>Omnichannel CCaaS, IVR, workforce tools and AI agents.</p></div>
+      <div class="cat"><span class="idx">03</span><h4>Cybersecurity</h4><p>Managed detection and response, email security, assessments and compliance.</p></div>
+      <div class="cat"><span class="idx">04</span><h4>Managed IT</h4><p>Help desk, device management, backup and disaster recovery.</p></div>
+      <div class="cat"><span class="idx">05</span><h4>Mobility &amp; IoT</h4><p>Business wireless plans, devices, private 5G and fleet connectivity.</p></div>
+      <div class="cat"><span class="idx">06</span><h4>Business TV</h4><p>DISH and cable TV for lobbies, waiting rooms, hospitality and bars.</p></div>
+      <div class="cat"><span class="idx">07</span><h4>Security &amp; Access</h4><p>Video surveillance, access control and cloud-managed cameras.</p></div>
+      <div class="cat"><span class="idx">08</span><h4>Meeting Rooms &amp; AV</h4><p>Conference room systems, displays and video collaboration.</p></div>
+      <div class="cat"><span class="idx">09</span><h4>Data Center &amp; Colocation</h4><p>Colocation, hosted infrastructure and cloud migration.</p></div>
+      <div class="cat"><span class="idx">10</span><h4>Satellite &amp; Remote Sites</h4><p>Starlink Business for job sites, rural locations and backup.</p></div>
+      <div class="cat"><span class="idx">11</span><h4>Expense Management</h4><p>Audits, cost recovery and one consolidated view of every bill.</p></div>
+      <div class="cat"><span class="idx">12</span><h4>AI &amp; Automation</h4><p>Practical AI for service, sales and operations, sourced and supported.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="providers" id="providers" aria-labelledby="provTitle">
+  <div class="wrap">
+    <div class="prov-head">
+      <p class="eyebrow">One Advisor · Every Provider</p>
+      <h2 class="h-caps h-l" id="provTitle">The Whole Market,<br>on Your Side</h2>
+      <p class="lede muted" style="text-align:center">We compare offers across national carriers, regional providers and cloud platforms, then recommend what fits your sites, your budget and your growth.</p>
+    </div>
+    <div class="prov-list">
+      <span>AT&amp;T</span><span>Spectrum Business</span><span>Cox Business</span><span>Starlink</span><span>DISH</span><span>Verizon Business</span><span>Comcast Business</span><span>T-Mobile for Business</span><span>Frontier</span><span>Lumen</span><span>Zayo</span><span>Microsoft</span><span>RingCentral</span><span>and many more</span>
+    </div>
+    <p class="prov-note">Brand names are trademarks of their respective owners and are listed to show the range of services available.</p>
+  </div>
+</section>
+
+<section id="approach" aria-labelledby="appTitle">
+  <div class="wrap">
+    <p class="eyebrow">The Story Behind Every Engagement</p>
+    <h2 class="h-caps h-l" id="appTitle" style="margin:22px 0 26px">A Better Way to Buy,<br>Build and Manage Technology</h2>
+    <p class="lede" style="color:rgba(243,239,230,.8)">Technology rarely fails at purchase. It fails in the years after. Our approach covers the whole lifecycle, so the advice you get on day one is still being honored on day one thousand.</p>
+    <div class="steps">
+      <div class="step"><span class="k">Phase 01</span><h3 class="h-caps h-m">Strategy</h3><p>We review your sites, contracts and invoices, then map what you have against where the business is going.</p></div>
+      <div class="step"><span class="k">Phase 02</span><h3 class="h-caps h-m">Sourcing</h3><p>We take your requirements to market, compare providers side by side and negotiate the terms.</p></div>
+      <div class="step"><span class="k">Phase 03</span><h3 class="h-caps h-m">Implementation</h3><p>We manage carriers, installers and cutover dates so your team keeps working through the change.</p></div>
+      <div class="step"><span class="k">Phase 04</span><h3 class="h-caps h-m">Lifecycle</h3><p>We stay on as your escalation point, audit bills, track renewals and plan the next upgrade.</p></div>
+    </div>
+  </div>
+</section>
+
+<div class="industries">
+  <div class="wrap">
+    <p class="eyebrow">Industries We Serve</p>
+    <ul>
+      <li>Healthcare</li><li>Hospitality</li><li>Real Estate</li><li>Professional Services</li><li>Retail &amp; Multi-Site</li><li>Construction</li><li>Education</li><li>Manufacturing</li>
+    </ul>
+  </div>
+</div>
+
+<section class="inquire light" id="inquire" aria-labelledby="inqTitle">
+  <div class="wrap">
+    <div>
+      <p class="eyebrow">Inquire Now</p>
+      <h2 class="h-caps h-l" id="inqTitle" style="margin:22px 0 26px">Begin the<br>Conversation</h2>
+      <p class="muted">Tell us about your locations and what you are trying to solve. An advisor will follow up to schedule a review of your current services.</p>
+      <div class="contact-blocks">
+        <div><span class="k">Advisory</span><span>info@communicationmall.com</span></div>
+        <div><span class="k">Service Area</span><span>Orange County, Los Angeles, the Inland Empire and San Diego, with nationwide sourcing for multi-site businesses</span></div>
+      </div>
+    </div>
+    <form id="inqForm" novalidate>
+      <div class="field"><label for="fName">Full Name</label><input id="fName" name="name" autocomplete="name" required></div>
+      <div class="field"><label for="fCompany">Company</label><input id="fCompany" name="company" autocomplete="organization"></div>
+      <div class="field"><label for="fEmail">Email</label><input id="fEmail" name="email" type="email" autocomplete="email" required></div>
+      <div class="field"><label for="fPhone">Phone</label><input id="fPhone" name="phone" type="tel" autocomplete="tel"></div>
+      <div class="field"><label for="fSites">Number of Locations</label>
+        <select id="fSites" name="sites"><option>1</option><option>2 to 5</option><option>6 to 20</option><option>More than 20</option></select>
+      </div>
+      <div class="field"><label for="fTiming">Timing</label>
+        <select id="fTiming" name="timing"><option>Contract renewing soon</option><option>New location or move</option><option>Exploring options</option><option>Urgent service issue</option></select>
+      </div>
+      <fieldset class="field full" style="border:0">
+        <legend style="font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:#5f6466;margin-bottom:12px">Interested In</legend>
+        <div class="chips">
+          <input type="checkbox" id="c1" name="need" value="Connectivity"><label for="c1">Connectivity</label>
+          <input type="checkbox" id="c2" name="need" value="Cabling"><label for="c2">Cabling</label>
+          <input type="checkbox" id="c3" name="need" value="Cloud Networking"><label for="c3">Cloud Networking</label>
+          <input type="checkbox" id="c4" name="need" value="Voice"><label for="c4">Voice</label>
+          <input type="checkbox" id="c5" name="need" value="TV"><label for="c5">TV</label>
+          <input type="checkbox" id="c6" name="need" value="Security"><label for="c6">Security</label>
+          <input type="checkbox" id="c7" name="need" value="Cost Review"><label for="c7">Cost Review</label>
+        </div>
+      </fieldset>
+      <div class="field full"><label for="fMsg">Message</label><textarea id="fMsg" name="message" rows="3"></textarea></div>
+      <button class="submit" type="submit">Send Inquiry</button>
+      <p class="form-msg" id="formMsg" role="status" aria-live="polite"></p>
+    </form>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-links">
+      <a href="#welcome">The Firm</a><a href="#core">Solutions</a><a href="#pricing">Pricing</a><a href="#providers">Providers</a><a href="#approach">Approach</a><a href="#inquire">Inquire Now</a><a href="#top">Privacy Notice</a>
+    </div>
+    <div class="foot-grid">
+      <div>
+        <a class="brand" href="#top" aria-label="Communication Mall home" style="margin-bottom:18px">
+          <span class="name">Communication Mall<small>Tech Advisory</small></span>
+        </a>
+        <p style="max-width:36ch;margin-top:16px">A leading tech advisory firm in Southern California for connectivity, cabling, cloud networking and every service in between.</p>
+      </div>
+      <div><h5>Core</h5><ul><li>Connectivity</li><li>Structured Cabling</li><li>Cloud Networking</li></ul></div>
+      <div><h5>Also</h5><ul><li>Voice &amp; Contact Center</li><li>Security &amp; Managed IT</li><li>Business TV &amp; Satellite</li></ul></div>
+      <div><h5>Contact</h5><ul><li>info@communicationmall.com</li><li>Southern California</li></ul></div>
+    </div>
+    <div class="legal"><span>© 2026 Communication Mall. All rights reserved.</span><span>Vendor-neutral technology advisory</span></div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  // mobile menu
+  var btn=document.getElementById('menuBtn'), nav=document.getElementById('mainNav');
+  btn.addEventListener('click',function(){var o=nav.classList.toggle('open');btn.setAttribute('aria-expanded',o);btn.textContent=o?'Close':'Menu';});
+  nav.addEventListener('click',function(e){if(e.target.tagName==='A'){nav.classList.remove('open');btn.setAttribute('aria-expanded','false');btn.textContent='Menu';}});
+
+  // inquiry form (preview: not connected to email yet)
+  var form=document.getElementById('inqForm'), msg=document.getElementById('formMsg');
+  form.addEventListener('submit',function(e){
+    e.preventDefault();
+    var n=form.name.value.trim(), em=form.email.value.trim();
+    if(!n||!/^\S+@\S+\.\S+$/.test(em)){msg.textContent='Please add your name and a valid email address.';return;}
+    msg.textContent='Thank you, '+n.split(' ')[0]+'. This preview form is not connected to an inbox yet, so nothing was sent.';
+  });
+
+})();
+</script>
+</body>
+</html>
